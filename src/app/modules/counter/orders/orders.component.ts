@@ -48,17 +48,8 @@ export class OrdersComponent implements OnInit {
   modalReference: any;
   ngOnInit(): void {
     this.observePath('orders');
-    // if (localStorage.getItem('heading') != null) {
-    //   this.Menus.map((e: any) => {
-    //     const word: any = localStorage.getItem('heading');
-    //     if (e.hasOwnProperty(word)) {
-    //       this.MenuSelected = e[word];
-    //     }
-    //   });
-    // }
     if(localStorage.getItem('orderView') == 'false'){
       this.MyOrderView = false
-      // debugger
     }
     else{
       this.MyOrderView = true
@@ -82,20 +73,6 @@ export class OrdersComponent implements OnInit {
       this.cd.detectChanges();
     }),(err:any)=>console.log(err);
     ;
-    UniversalService.cartShow.subscribe((res) => {
-      if (res) {
-        // this.Menus.map((e: any) => {
-        //   const word = JSON.stringify(localStorage.getItem('heading')).replace(
-        //     / /g,
-        //     '_'
-        //   );
-        //   if (e.hasOwnProperty(word)) {
-        //     this.MenuSelected = e[word];
-        //   }
-        // });
-      }
-      this.cd.detectChanges();
-    });
     UniversalService.itemDetailView.subscribe((res) => {
       if (res) {
         this.itemDetailView = true;

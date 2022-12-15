@@ -41,3 +41,44 @@ h3 {
 .dropdown-toggle::after {
   content: unset;
 }
+.form input{
+  background-color: #3a3a3a;
+  padding: 8px 11px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+.profileBox{
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  img{
+    object-fit: cover;
+  }
+}
+.heading,.headingLight {
+  font-family: josefinsemiregular;
+  color: #fff;
+  margin-left: 20px;
+}
+.headingLight{
+  font-family: josefinsemilight;
+}
+.btn-close{
+  margin-left: 10px;
+    margin-top: 10px;
+}
+.cancel-btn {
+  background-color: #bb2b2b;
+  color: #fff;
+  padding: 5px 40px;
+  border-radius: 50px;
+}
+.add-btn {
+  background-color: #2b98bb;
+  padding: 5px 40px;
+  color: #fff;
+  border-radius: 50px;
+}

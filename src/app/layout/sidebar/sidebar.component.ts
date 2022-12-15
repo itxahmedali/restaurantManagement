@@ -98,8 +98,8 @@ export class SidebarComponent implements OnInit {
       type: 'link',
     },
     {
-      path: 'sale&expense',
-      title: 'Sale & Expense',
+      path: 'sale&expenses',
+      title: 'Sale & Expenses',
       icon: 'assets/sidebarIcons/starter.png',
       type: 'link',
     },
@@ -132,7 +132,10 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.href = this.location.path();
     if (this.href == '/welcome-counter' || this.href.split('/')[1] == 'counter') {
-      UniversalService.headerHeading.next('');
+      if(!localStorage.hasOwnProperty('lastVisitheadingPage')){
+        localStorage.setItem('lastVisitheadingPage', 'Orders');
+      }
+      UniversalService.headerHeading.next('Orders');
       this.role = this.helper.urlCheck(this.href, 'welcome-counter', 'counter');
     }
     if (this.href == '/welcome-customers' || this.href == '/customers') {
@@ -143,7 +146,7 @@ export class SidebarComponent implements OnInit {
       UniversalService.headerHeading.next('Starters');
       this.role = this.helper.urlCheck(this.href, 'welcome-waiters', 'waiters');
     }
-    if (this.href == 'welcome-kitchen' || this.href.split('/')[1] == 'kitchen') {
+    if (this.href == '/welcome-kitchen' || this.href.split('/')[1] == 'kitchen') {
       if(!localStorage.hasOwnProperty('lastVisitheadingPage')){
         localStorage.setItem('lastVisitheadingPage', 'Orders');
       }
@@ -162,8 +165,9 @@ export class SidebarComponent implements OnInit {
         localStorage.setItem('orderView', 'false')
       }
     };
-    if(this.role == 'kitchen') this.menuItems = this.kitchenItem;
-    if(this.role == 'counter') this.menuItems = this.counterItem;
+    if(this.role == 'kitchen') {
+      this.menuItems = this.kitchenItem};
+    if(this.role == 'counter') {this.menuItems = this.counterItem};
     let vistHead = localStorage.getItem('lastVisitheadingPage');
     if (localStorage.getItem('lastVisitheadingPage') != null) {
       this.routerHead(null, vistHead);

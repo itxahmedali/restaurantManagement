@@ -89,31 +89,7 @@
 .pinkbackground {
   background-color: #bb2b79 !important;
 }
-.statusBox {
-  margin-left: 20px;
-  p {
-    color: #fff;
-    font-family: josefinsemiregular;
-    margin: 0;
-  }
-  .redStatus,
-  .yellowStatus,
-  .greenStatus {
-    width: 15px;
-    height: 15px;
-    border-radius: 100px;
-    margin-right: 10px;
-  }
-  .redStatus {
-    background-color: #e36a6a;
-  }
-  .yellowStatus {
-    background-color: #e1e36a;
-  }
-  .greenStatus {
-    background-color: #5cf07d;
-  }
-}
+
 .tablePadd {
   padding: 3rem;
 }
@@ -230,24 +206,24 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  .subtotal,
-  .grandtotal,
-  .extraCharges {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    h5 {
-      color: #fff;
-      font-family: poppinsbold;
-      margin-top: 1rem;
-    }
-    h6 {
-      color: #cfcfcf;
-      font-family: poppinslight;
-      margin: 0;
-      margin-top: 5px;
-    }
+}
+.subtotal,
+.grandtotal,
+.extraCharges {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  h5 {
+    color: #fff;
+    font-family: poppinsbold;
+    margin-top: 1rem;
+  }
+  h6 {
+    color: #cfcfcf;
+    font-family: poppinslight;
+    margin: 0;
+    margin-top: 5px;
   }
 }
 .hr {
@@ -291,6 +267,14 @@
     text-align: center;
   }
 }
+.expenseTable{
+  .table > :not(caption) > * > * {
+    min-width: 170px;
+    max-width: 170px;
+    padding: 10px 0 !important;
+    text-align: center;
+  }
+}
 .dateLabel {
   font-size: 10px;
 }
@@ -308,8 +292,8 @@
   margin: 0;
   color: #fff;
   position: absolute;
-  bottom: 10px;
-  right: 40px;
+  bottom: -50px;
+    right: 20px;
   cursor: pointer;
   .fa {
     font-size: 20px;
@@ -355,5 +339,25 @@
     background-color: #2bbbbb;
     min-width: 120px;
     color: #fff;
+  }
+}
+.actionbtn{
+  background: #000;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  padding: 5px;
+  i{
+    color: #fff;
+    font-size: 15px;
+  }
+  .fa-trash{
+    color: red;
+  }
+  .fa-edit{
+    color: #2bbbbb;
   }
 }

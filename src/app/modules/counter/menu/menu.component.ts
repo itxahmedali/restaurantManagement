@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NavService } from 'src/app/services/nav.service';
 import { UniversalService } from 'src/app/services/universal.service';
 
@@ -77,17 +78,29 @@ export class MenuComponent implements OnInit {
   ];
   public MenuSelected: any;
   public addCategory: boolean = false;
+  public addMenu: boolean = false;
   public itemDetailView: boolean = false;
   public itemDetail: any;
   public theBoundCallback: Function;
-  constructor(private cd: ChangeDetectorRef, private router: Router) {}
-
+  public modalReference: any; 
+  public image: any; 
+  constructor(private cd: ChangeDetectorRef, private router: Router, private modalService: NgbModal) { }
   ngOnInit(): void {
     this.Menus.map((e: any) => {
-      console.log(e);
-      const word: any = 'Fast_Food';
-      if (e.hasOwnProperty(word)) {
-        this.MenuSelected = e[word];
+      const head: any = localStorage.getItem('heading')
+      let word: any = head?.replace(/ /g, '_')
+      if (word == 'Add_Menu') {
+        this.addMenu = true;
+        this.addCategory = false;
+      }
+      if (word == 'Category') {
+        this.addCategory = true;
+        this.addMenu = false;
+      }
+      else {
+        if (e.hasOwnProperty(word)) {
+          this.MenuSelected = e[word];
+        }
       }
     });
     this.observe();
@@ -96,12 +109,19 @@ export class MenuComponent implements OnInit {
   async observe() {
     UniversalService.headerHeading.subscribe((res: string) => {
       const word = res.replace(/ /g, '_');
-      if (word == 'Add_Menu' || word == 'Category') {
+      if (word == 'Add_Menu') {
+        this.addMenu = true;
+        this.addCategory = false;
+      }
+      if (word == 'Category') {
         this.addCategory = true;
+        this.addMenu = false;
+
       } else {
         this.Menus.map((e: any) => {
           if (e.hasOwnProperty(word)) {
             this.MenuSelected = e[word];
+            this.addMenu = false;
             this.addCategory = false;
           }
         });
@@ -153,5 +173,15 @@ export class MenuComponent implements OnInit {
       this.cd.detectChanges();
     }),
       (err: any) => console.log(err);
+  }
+  open(content: any, modal: string) {
+    this.modalReference = this.modalService.open(content, {
+      centered: true,
+      backdrop: 'static',
+      windowClass: 'checkoutModal',
+    });
+  }
+  proceed() {
+    this.modalReference.close();
   }
 }

@@ -1,12 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-3" @fadeIn *ngFor="let item of Orders">
-      <div class="orderBox">
+<div class="container d-flex flex-wrap">
+  <!-- <div class="row">
+    <div class="col-sm-3" > -->
+      <div class="orderBox mt-5 mb-5" @fadeIn *ngFor="let item of Orders">
         <div
           class="orderHeader"
           [ngClass]="{
-            greenHeader: item.status == 'inprocess',
-            redHeader: item.status == 'not-started'
+            yellowHeader: item.status == 'inprocess',
+            redHeader: item.status == 'not-started',
+            greenHeader: item.status == 'completed'
           }"
         >
           <p class="orderHeading">Order No</p>
@@ -33,14 +34,21 @@
         </button>
         <button
           *ngIf="item.status == 'inprocess'"
-          class="orderBtn greenHeader"
+          class="orderBtn yellowHeader"
           (click)="open(completed, item)"
         >
           In Process
         </button>
+        <button
+          *ngIf="item.status == 'completed'"
+          class="orderBtn greenHeader"
+          (click)="open(completed, item)"
+        >
+          Completed
+        </button>
       </div>
-    </div>
-  </div>
+    <!-- </div>
+  </div> -->
 </div>
 
 <!-- order details -->

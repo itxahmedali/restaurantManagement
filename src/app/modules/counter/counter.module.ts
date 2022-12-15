@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { CounterRoutingModule } from './counter-routing.module';
 import { CounterComponent } from './counter.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -11,8 +10,7 @@ import { BookingsComponent } from './bookings/bookings.component';
 import { SupportComponent } from './support/support.component';
 import { MenuComponent } from './menu/menu.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     CounterRoutingModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    NgbNavModule
   ]
 })
 export class CounterModule { }

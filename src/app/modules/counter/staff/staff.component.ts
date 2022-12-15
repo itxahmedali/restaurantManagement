@@ -1,3 +1,4 @@
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UniversalService } from 'src/app/services/universal.service';
@@ -8,8 +9,9 @@ import { UniversalService } from 'src/app/services/universal.service';
   styleUrls: ['./staff.component.scss']
 })
 export class StaffComponent implements OnInit {
-
-  constructor(private router:Router, private cd:ChangeDetectorRef) { }
+  modalReference: any;
+  public image:File
+  constructor(private router:Router, private cd:ChangeDetectorRef, private modalService: NgbModal) { }
   public Staff: any = [      
         {
           id: 1,
@@ -53,5 +55,14 @@ export class StaffComponent implements OnInit {
       this.cd.detectChanges();
     });
   }
-
+  open(content: any, modal: string) {
+    this.modalReference = this.modalService.open(content, {
+      centered: true,
+      backdrop: 'static',
+      windowClass: 'checkoutModal',
+    });
+  }
+  proceed() {
+    this.modalReference.close();
+  }
 }

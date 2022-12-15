@@ -1,6 +1,9 @@
 .orderBox {
   background-color: #ffffff36;
-  min-height: 350px;
+  height:fit-content;
+  width: calc(100% / 3 - 2rem);
+  margin-right: .5rem;
+  margin-left: .5rem;
   border-radius: 10px;
   position: relative;
   padding-bottom: 2rem;
@@ -62,6 +65,9 @@
 }
 .redHeader {
   background-color: #e73b3b;
+}
+.yellowHeader {
+  background-color: #e1e36a;
 }
 .backBtn {
   margin-left: 20px;

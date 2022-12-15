@@ -8,6 +8,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { Title } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -18,9 +19,11 @@ export class HeaderComponent implements OnInit {
   public heading: any = localStorage.getItem('lastVisitheadingPage') ? localStorage.getItem('lastVisitheadingPage') : "Starters";
   public href: string = 'null';
   public cartButton: boolean = false;
+  public cartButtonShow: boolean = true;
   public headingShow: boolean = true;
   public waiter: any = false;
-  constructor(private cd: ChangeDetectorRef, private router: Router, private helper: HelperService,
+  public modalReference: any;
+  constructor(private modalService: NgbModal, private cd: ChangeDetectorRef, private router: Router, private helper: HelperService,
     private location: Location, private AuthGuarDService: AuthGuardService) { }
   text: any = localStorage.getItem('lastVisitheadingPage') ? localStorage.getItem('lastVisitheadingPage') : "Starters";
   ngOnInit(): void {
@@ -28,6 +31,9 @@ export class HeaderComponent implements OnInit {
     this.heading = localStorage.getItem('lastVisitheadingPage') ? localStorage.getItem('lastVisitheadingPage') : "Starters";
     this.checkUrl()
     this.observe();
+    if(localStorage.getItem('role') == 'counter'){
+      this.cartButtonShow = false
+    }
   }
   async observe() {
     UniversalService.headerHeading.subscribe((res: string) => {
@@ -71,7 +77,7 @@ export class HeaderComponent implements OnInit {
   }
   cartShow() {
     console.log(this.cartButton);
-    
+
     this.cartButton = !this.cartButton;
     if (this.cartButton) {
       UniversalService.cartShow.next(true);
@@ -94,5 +100,16 @@ export class HeaderComponent implements OnInit {
   myOrders() {
     UniversalService.cartShow.next(false);
     UniversalService.Orders.next(true)
+  }
+  open(content: any, modal: any) {
+    this.modalReference = this.modalService.open(content, {
+      centered: true,
+      backdrop: 'static',
+      windowClass: 'checkoutModal',
+      size: 'md'
+    });
+  }
+  proceed() {
+    this.modalReference.close();
   }
 }

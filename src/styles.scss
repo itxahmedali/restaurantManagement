@@ -1,8 +1,8 @@
 /* Importing Bootstrap SCSS file. */
-@import "~bootstrap/scss/bootstrap";
+@import "bootstrap/scss/bootstrap";
 /* You can add global styles to this file, and also import other style files */
 // ng select
-@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "@ng-select/ng-select/themes/default.theme.css";
 // fontawesome icons
 $font-awesome: FontAwesome;
 // fonts families
@@ -344,4 +344,51 @@ thead{
 // commons
 .zIndexUp{
   z-index: 1000;
+}
+.descripionTable {
+  display: -webkit-box;
+  // width: 350px;
+  // text-align: center !important;
+}
+// .textleft{
+//   text-align: left !important;
+// }
+.passwordBox{
+  position: relative;
+  i{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 30px;
+      color: #fff;
+  }
+}
+// .mainHeading{
+//   color: --headings-primary-color;
+//   font-family: josefinsemiregular;
+// }
+.statusBox {
+  margin-left: 20px;
+  p {
+    color: #fff;
+    font-family: josefinsemiregular;
+    margin: 0;
+  }
+  .redStatus,
+  .yellowStatus,
+  .greenStatus {
+    width: 15px;
+    height: 15px;
+    border-radius: 100px;
+    margin-right: 10px;
+  }
+  .redStatus {
+    background-color: #e36a6a;
+  }
+  .yellowStatus {
+    background-color: #e1e36a;
+  }
+  .greenStatus {
+    background-color: #5cf07d;
+  }
 }

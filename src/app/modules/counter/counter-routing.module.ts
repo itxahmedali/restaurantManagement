@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'orders', component: OrdersComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'staff', component: StaffComponent },
-  { path: 'sale&expense', component: SaleComponent },
+  { path: 'sale&expenses', component: SaleComponent },
   { path: 'reportings', component: ReportingsComponent },
   { path: 'bookings', component: BookingsComponent },
   { path: 'support', component: SupportComponent },
