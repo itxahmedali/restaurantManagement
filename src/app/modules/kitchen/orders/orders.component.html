@@ -1,0 +1,31 @@
+<div class="container">
+  <!-- <div class="row"> -->
+    <!-- <div class="col-sm-12 mt-5"> -->
+        <div class="heightControlled">
+            <app-order [data]="orders"></app-order>
+        </div>
+    <!-- </div> -->
+    <!-- <div class="col-sm-12"> -->
+        <div class="d-flex justify-content-end align-items-center mt-5">
+          <div class="statusBox">
+            <div class="inprocess d-flex justify-content-center align-items-center">
+              <div class="redStatus"></div>
+              <p>About to start</p>
+            </div>
+          </div>
+          <div class="statusBox">
+            <div class="ending d-flex justify-content-center align-items-center">
+              <div class="yellowStatus"></div>
+              <p>In process</p>
+            </div>
+          </div>
+          <div class="statusBox">
+            <div class="complete d-flex justify-content-center align-items-center">
+              <div class="greenStatus"></div>
+              <p>Completed</p>
+            </div>
+          </div>
+        </div>
+    <!-- </div>
+  </div> -->
+</div>
