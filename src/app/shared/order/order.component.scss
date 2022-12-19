@@ -1,3 +1,4 @@
+
 .orderBox {
   background-color: #ffffff36;
   height:fit-content;
@@ -105,4 +106,9 @@
 }
 .widthFit{
     width: fit-content;
+}
+.modal-body{
+  .orderBox{
+    width: 100%;
+  }
 }

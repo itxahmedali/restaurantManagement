@@ -1,7 +1,7 @@
 import { UniversalService } from './../../services/universal.service';
 import { fadeIn } from './../../../animations/itemCartAnimation';
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
-
+import * as $ from 'jquery'
 @Component({
   selector: 'app-item-detail',
   templateUrl: './item-detail.component.html',
@@ -21,5 +21,15 @@ export class ItemDetailComponent implements OnInit {
   }
   back(){
     UniversalService.itemDetailView.next(false)
+  }
+  counter(state: string, event: any) {
+    let value: any = $(event?.target?.parentNode?.parentNode).find('.value')[0].innerHTML
+    if (state == 'plus') {
+      value++
+    }
+    if (state == 'minus' && value > 0) {
+      value--
+    }
+    $(event?.target?.parentNode?.parentNode).find('.value')[0].innerHTML = value
   }
 }

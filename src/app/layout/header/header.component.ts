@@ -76,16 +76,12 @@ export class HeaderComponent implements OnInit {
     }
   }
   cartShow() {
-    console.log(this.cartButton);
-
     this.cartButton = !this.cartButton;
     if (this.cartButton) {
       UniversalService.cartShow.next(true);
     } else {
       UniversalService.cartShow.next(false);
     }
-    console.log(this.cartButton);
-
   }
   logout() {
     localStorage.clear()

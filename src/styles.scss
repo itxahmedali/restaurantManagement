@@ -8,38 +8,31 @@ $font-awesome: FontAwesome;
 // fonts families
 @font-face {
   font-family: "josefinsemibold";
-  src: local("josefinsemibold"),
-    url(./assets/fonts/josefin/JosefinSans-SemiBold.ttf) format("truetype");
+  src: local("josefinsemibold"), url(./assets/fonts/josefin/JosefinSans-SemiBold.ttf) format("truetype");
 }
 @font-face {
   font-family: "josefinbold";
-  src: local("josefinbold"),
-    url(./assets/fonts/josefin/JosefinSans-Bold.ttf) format("truetype");
+  src: local("josefinbold"), url(./assets/fonts/josefin/JosefinSans-Bold.ttf) format("truetype");
 }
 @font-face {
   font-family: "josefinsemiregular";
-  src: local("josefinsemiregular"),
-    url(./assets/fonts/josefin/JosefinSans-Regular.ttf) format("truetype");
+  src: local("josefinsemiregular"), url(./assets/fonts/josefin/JosefinSans-Regular.ttf) format("truetype");
 }
 @font-face {
   font-family: "josefinsemilight";
-  src: local("josefinsemilight"),
-    url(./assets/fonts/josefin/JosefinSans-Light.ttf) format("truetype");
+  src: local("josefinsemilight"), url(./assets/fonts/josefin/JosefinSans-Light.ttf) format("truetype");
 }
 @font-face {
   font-family: "poppinsbold";
-  src: local("poppinsbold"),
-    url(./assets/fonts/Poppins/Poppins-Bold.ttf) format("truetype");
+  src: local("poppinsbold"), url(./assets/fonts/Poppins/Poppins-Bold.ttf) format("truetype");
 }
 @font-face {
   font-family: "poppinsregular";
-  src: local("poppinsregular"),
-    url(./assets/fonts/Poppins/Poppins-Regular.ttf) format("truetype");
+  src: local("poppinsregular"), url(./assets/fonts/Poppins/Poppins-Regular.ttf) format("truetype");
 }
 @font-face {
   font-family: "poppinslight";
-  src: local("poppinslight"),
-    url(./assets/fonts/Poppins/Poppins-Light.ttf) format("truetype");
+  src: local("poppinslight"), url(./assets/fonts/Poppins/Poppins-Light.ttf) format("truetype");
 }
 // themes colors
 :root {
@@ -127,7 +120,66 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+.addMenuBtn {
+  background: none;
+  border: none;
+  color: #fff;
+}
+.cancel-btn {
+  background-color: #bb2b2b;
+  color: #fff;
+  padding: 5px 40px;
+  border-radius: 50px;
+  border: none;
+}
+.add-btn {
+  background-color: #2b98bb;
+  padding: 5px 40px;
+  color: #fff;
+  border-radius: 50px;
+  border: none;
+}
+.table{
+  thead,tbody{
+    tr{
+      th,td{
+        min-width: 140px;
+        span{
+          white-space: nowrap;
+          width: 50px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}
+thead{
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  tr{
+    background: #444444;
+  }
+}
+tbody{
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  tr{
+    background-color: #262626;
+  }
+}
+.modal-body{
+  padding: 40px 30px !important;
+  .btn-close{
+    position: absolute;
+      top: 10px;
+      left: 10px;
+  }
+}
+.heading {
+  font-family: josefinsemiregular;
+  color: #fff;
+}
 .checkoutModal {
   .modal-content {
     background: rgba(255, 255, 255, 0.2);
@@ -215,13 +267,13 @@ body {
   }
 }
 // table styling
-tbody{
-  border-bottom-left-radius  : 10px;
-  border-bottom-right-radius  : 10px;
+tbody {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
-thead{
-  border-top-left-radius  : 10px;
-  border-top-right-radius  : 10px;
+thead {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .table-responsive {
   thead {
@@ -246,27 +298,28 @@ thead{
   content: unset !important;
 }
 .ngx-pagination .current,
-.ngx-pagination a:hover, .ngx-pagination button:hover {
+.ngx-pagination a:hover,
+.ngx-pagination button:hover {
   border-radius: 5px;
   background: #444444 !important;
 }
-.table-responsive{
+.table-responsive {
   li {
-    margin:0 5px;
-    a{
+    margin: 0 5px;
+    a {
       background: #262626 !important;
       border-radius: 5px !important;
     }
   }
 }
 // toggle switch
-.toggle{
-  input[type=checkbox]{
+.toggle {
+  input[type="checkbox"] {
     height: 0;
     width: 0;
     visibility: hidden;
   }
-  
+
   label {
     cursor: pointer;
     width: 50px;
@@ -277,33 +330,33 @@ thead{
     position: relative;
     border: 1px solid;
   }
-  
+
   label:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 5px;
     left: 5px;
     width: 15px;
     height: 15px;
-    background:#D40404;
+    background: #d40404;
     border-radius: 90px;
     transition: 0.3s;
   }
-  
+
   input:checked + label:after {
-    background: #04AD5C;
+    background: #04ad5c;
   }
-  
+
   input:checked + label:after {
     left: calc(100% - 5px);
     transform: translateX(-100%);
   }
-  
+
   label:active:after {
-    width:70px;
+    width: 70px;
   }
 }
-.cstmDropDown{
+.cstmDropDown {
   .ng-select .ng-select-container,
   .ng-select.ng-select-single .ng-select-container {
     background: #fff0 !important;
@@ -311,7 +364,7 @@ thead{
     color: #fff;
   }
 }
-.noBg{
+.noBg {
   background: none;
   border: none;
   padding: 10px;
@@ -342,7 +395,7 @@ thead{
   background: #555;
 }
 // commons
-.zIndexUp{
+.zIndexUp {
   z-index: 1000;
 }
 .descripionTable {
@@ -353,14 +406,14 @@ thead{
 // .textleft{
 //   text-align: left !important;
 // }
-.passwordBox{
+.passwordBox {
   position: relative;
-  i{
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: 30px;
-      color: #fff;
+  i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 30px;
+    color: #fff;
   }
 }
 // .mainHeading{

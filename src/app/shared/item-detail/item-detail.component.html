@@ -24,25 +24,31 @@
                         class="options mt-3 mb-3 d-flex justify-content-between align-items-center"
                       >
                         <p @fadeIn>Extra Beef Patty</p>
-                        <button class="addBtn">
-                          <i class="fa fa-plus"></i>
-                        </button>
+                        <div class="counter d-flex align-items-center">
+                          <button class="addBtn" (click)="counter('plus', $event)"><i class="fa fa-plus" ></i></button>
+                          <label class="value">0</label>
+                          <button class="addBtn" (click)="counter('minus', $event)"><i class="fa fa-minus" ></i></button>
+                        </div>
                       </div>
                       <div
                         class="options mt-3 mb-3 d-flex justify-content-between align-items-center"
                       >
                         <p @fadeIn>Extra Beef Patty</p>
-                        <button class="addBtn">
-                          <i class="fa fa-plus"></i>
-                        </button>
+                        <div class="counter d-flex align-items-center">
+                          <button class="addBtn" (click)="counter('plus', $event)"><i class="fa fa-plus" ></i></button>
+                          <label class="value">0</label>
+                          <button class="addBtn" (click)="counter('minus', $event)"><i class="fa fa-minus" ></i></button>
+                        </div>
                       </div>
                       <div
                         class="options mt-3 mb-3 d-flex justify-content-between align-items-center"
                       >
                         <p @fadeIn>Extra Beef Patty</p>
-                        <button class="addBtn">
-                          <i class="fa fa-plus"></i>
-                        </button>
+                        <div class="counter d-flex align-items-center">
+                          <button class="addBtn" (click)="counter('plus', $event)"><i class="fa fa-plus" ></i></button>
+                          <label class="value">0</label>
+                          <button class="addBtn" (click)="counter('minus', $event)"><i class="fa fa-minus" ></i></button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -55,25 +61,31 @@
                         class="options mt-3 mb-3 d-flex justify-content-between align-items-center"
                       >
                         <p @fadeIn>7Up</p>
-                        <button class="addBtn">
-                          <i class="fa fa-plus"></i>
-                        </button>
+                        <div class="counter d-flex align-items-center">
+                          <button class="addBtn" (click)="counter('plus', $event)"><i class="fa fa-plus" ></i></button>
+                          <label class="value">0</label>
+                          <button class="addBtn" (click)="counter('minus', $event)"><i class="fa fa-minus" ></i></button>
+                        </div>
                       </div>
                       <div
                         class="options mt-3 mb-3 d-flex justify-content-between align-items-center"
                       >
                         <p @fadeIn>Pepsi</p>
-                        <button class="addBtn">
-                          <i class="fa fa-plus"></i>
-                        </button>
+                        <div class="counter d-flex align-items-center">
+                          <button class="addBtn" (click)="counter('plus', $event)"><i class="fa fa-plus" ></i></button>
+                          <label class="value">0</label>
+                          <button class="addBtn" (click)="counter('minus', $event)"><i class="fa fa-minus" ></i></button>
+                        </div>
                       </div>
                       <div
                         class="options mt-3 mb-3 d-flex justify-content-between align-items-center"
                       >
                         <p @fadeIn>Coke</p>
-                        <button class="addBtn">
-                          <i class="fa fa-plus"></i>
-                        </button>
+                        <div class="counter d-flex align-items-center">
+                          <button class="addBtn" (click)="counter('plus', $event)"><i class="fa fa-plus" ></i></button>
+                          <label class="value">0</label>
+                          <button class="addBtn" (click)="counter('minus', $event)"><i class="fa fa-minus" ></i></button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -89,7 +101,7 @@
                 </div>
               </div>
               <div class="checkoutBtn">
-                <button>Done</button>
+                <button (click)="back()">Done</button>
               </div>
             </div>
           </div>

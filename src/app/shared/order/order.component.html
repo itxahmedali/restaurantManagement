@@ -1,6 +1,4 @@
 <div class="container d-flex flex-wrap">
-  <!-- <div class="row">
-    <div class="col-sm-3" > -->
       <div class="orderBox mt-5 mb-5" @fadeIn *ngFor="let item of Orders">
         <div
           class="orderHeader"
@@ -47,8 +45,6 @@
           Completed
         </button>
       </div>
-    <!-- </div>
-  </div> -->
 </div>
 
 <!-- order details -->
@@ -71,7 +67,7 @@
           <p class="orderHeading">Order No</p>
           <p class="orderHeading orderHeadingNo">{{ OrderDetail.orderno }}</p>
         </div>
-        <div class="orderActionBtn" *ngIf="OrderDetail.status == 'not-started'">
+        <div class="orderActionBtn" *ngIf="OrderDetail.status == 'not-started'" (click)="proceed()">
           <div class="actionBtn">Start Now</div>
         </div>
       </div>
@@ -99,7 +95,7 @@
       <div class="col-sm-6 d-flex flex-column align-items-end">
         <div class="widthFit" *ngIf="OrderDetail.status == 'inprocess'">
           <p class="btnText text-center">Press if complete</p>
-          <button class="timerCapsule greenHeader">Complete</button>
+          <button class="timerCapsule greenHeader" (click)="proceed()">Complete</button>
         </div>
       </div>
     </div>

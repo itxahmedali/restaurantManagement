@@ -245,13 +245,18 @@
 .actionBtn {
   border: none;
   color: #fff;
+  background: none;
   border-radius: 100px;
-  // min-width: 150px;
-  margin: 5px 10px;
-  padding: 5px 1.5rem;
+  margin: 5px 5px;
+  padding: 5px 15px;
 }
 .fa {
   font-size: 10px;
+}
+.counter{
+  .fa{
+    font-size: 15px;
+  }
 }
 .cstmHeight {
   height: 70vh;
@@ -262,14 +267,14 @@
 }
 .listView {
   .table > :not(caption) > * > * {
-    min-width: 120px;
+    // min-width: 120px;
     padding: 10px 0 !important;
     text-align: center;
   }
 }
 .expenseTable{
   .table > :not(caption) > * > * {
-    min-width: 170px;
+    // min-width: 170px;
     max-width: 170px;
     padding: 10px 0 !important;
     text-align: center;
@@ -342,13 +347,14 @@
   }
 }
 .actionbtn{
-  background: #000;
+  background: none;
+  border: none;
   width: 30px;
   height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 5px;
+  margin: 0 auto;
   padding: 5px;
   i{
     color: #fff;
@@ -360,4 +366,29 @@
   .fa-edit{
     color: #2bbbbb;
   }
+}
+.counter {
+  position: relative;
+  label {
+      background: none;
+      text-align: center;
+  }
+  button{
+      color: #fff;
+      border-color: #fff;
+      border-radius: 40px;
+      background: none;
+      margin: 10px 20px;
+  }
+}
+.checboxes{
+  height: 450px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.menuItemLabel,.counter label {
+  color: #fff;
+}
+.menuItemLabel {
+  min-width: 150px;
 }

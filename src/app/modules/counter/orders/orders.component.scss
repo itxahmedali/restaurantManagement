@@ -1,22 +1,40 @@
-.nav-link.active{
+.nav-link.active {
     border-radius: 100px;
     background: none;
     color: #fff;
 }
-.nav-link{
+.nav-link {
     margin: 0 10px;
     min-width: 120px;
     border-radius: 100px;
     color: #fff;
 }
-.nav-tabs{
+.nav-tabs {
     border: none;
 }
-.tab-content{
+.tab-content,
+.menuItemLabel,.counter label {
     color: #fff;
 }
-// .tab-content{
-    // .active{
-    //     background-color: transparent !important;
-    // }
-// }
+.menuItemLabel {
+    min-width: 150px;
+}
+.counter {
+    position: relative;
+    label {
+        background: none;
+        text-align: center;
+    }
+    button{
+        color: #fff;
+        border-color: #fff;
+        border-radius: 40px;
+        background: none;
+        margin: 10px 20px;
+    }
+}
+.checboxes{
+    height: 450px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

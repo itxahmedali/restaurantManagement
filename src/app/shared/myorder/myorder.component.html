@@ -55,7 +55,7 @@
           </button>
           <div class="actionBtnBox">
             <button class="actionBtn greenbackground"> <i class="fa fa-refresh"></i> {{item.action.process}}</button>
-            <button class="actionBtn bluebackground"> <i class="fa fa-edit"></i> {{item.action.edit}}</button>
+            <button class="actionBtn bluebackground" (click)="open(newOrder, 'newOrder')"> <i class="fa fa-edit"></i> {{item.action.edit}}</button>
             <button class="actionBtn redbackground"> <i class="fa fa-ban"></i> {{item.action.cancel}}</button>
           </div>
         </div>
@@ -82,7 +82,6 @@
         }">
         <button (click)="open(counterTable, item)" class="table counterTbale" [ngClass]="{
                 red: item.status == 'In process',
-                yellow: item.status == 'Ending',
                 green: item.status == 'Complete'
               }">
           <h3>Table {{ item.no }}</h3>
@@ -225,23 +224,28 @@
 </div>
 <div class="container position-relative" *ngIf="opt == 'menu'">
   <div class="row">
-    <div class="col-sm-4 d-flex justify-content-start align-items-center">
+    <div class="col-sm-3 d-flex justify-content-start align-items-center">
       <div class="searchField mt-1 w-100">
         <input type="text" class="w-100" placeholder="Search Item" />
         <i class="fa fa-search"></i>
       </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
       <label class="dateLabel">Date Range</label>
       <div class="searchField mt-1 dateForm">
         <input type="text" placeholder="From" />
       </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
       <label for=""></label>
       <div class="searchField mt-1 dateForm">
         <input type="text" placeholder="To" />
       </div>
+    </div>
+    <div class="col-sm-2 d-flex justify-content-between align-items-center">
+      <button class="addMenuBtn" (click)="addMenu()">
+        <i class="fa fa-plus"></i> Add Table
+      </button>
     </div>
     <div class="col-sm-2 d-flex justify-content-end align-items-center cstmDropDown">
       <ng-select [(ngModel)]="selectedSort">
@@ -327,7 +331,7 @@
                   of: tables
                     | paginate
                       : {
-                          itemsPerPage: 5,
+                          itemsPerPage: 8,
                           currentPage: duePage,
                           totalItems: total
                         }
@@ -483,19 +487,23 @@
                   of: tables
                     | paginate
                       : {
-                          itemsPerPage: 5,
+                          itemsPerPage: 7,
                           currentPage: duePage,
                           totalItems: total
                         }
                 ">
-              <th scope="row">{{ i }}</th>
+              <td scope="row">{{ i }}</td>
               <td>
                 {{ item.date ? item.date : "N/A" }}
               </td>
               <td>{{ item.noitems ? item.noitems : "N/A" }}</td>
               <td>{{ item.nocustomers ? item.nocustomers : "N/A" }}</td>
               <td>{{ item.totalsales ? (item.totalsales | currency:'USD') : "N/A" }}</td>
-              <button class="actionBtn bluebackground"> <i class="fa fa-eye"></i> {{item.action.view}}</button>
+              <td>
+                <button class="actionbtn">
+                  <i class="fa fa-eye"></i>
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -644,7 +652,7 @@
                 <button class="timerCapsule">20:00</button>
               </div>
               <h5 class="mt-3 mb-3 orderStatus">{{ selectedTable?.status }}</h5>
-              <div><button class="btm-btn">Re Order</button></div>
+              <div><button class="btm-btn" (click)="proceed()">Re Order</button></div>
               <div>
                 <button class="btm-btn bg-dng" (click)="proceed(); open(completeOrder, 'complete')">
                   Done
@@ -699,7 +707,7 @@
               </div>
               <div class="checkoutBtn zIndexUp text-center">
                 <!-- <button id="checkoutBtn" (click)="open(viewOrder, 'checkout')"> -->
-                <button id="checkoutBtn" (click)="proceed(); open(orderDetails, 'orderDetails')">
+                <button id="checkoutBtn" (click)="proceed(); open(newOrderDetails, 'newOrderDetails')">
                   Checkout
                 </button>
               </div>
@@ -718,14 +726,14 @@
               </div>
               <div class="readyServe mt-5 mb-5 position-relative">
                 <h5>Ready to serve</h5>
-                <button>{{selectedTable.status}}</button>
+                <button >{{selectedTable.status}}</button>
               </div>
 
 
               <h6 class="mt-5 orderStatus">Waiter</h6>
               <h5 class="orderStatus">{{ selectedTable?.waiter }}</h5>
               <div>
-                <button class="btm-btn pinkbackground">
+                <button class="btm-btn pinkbackground" (click)="proceed(); open(newOrder, 'newOrder')">
                   Edit Order
                 </button>
               </div>
@@ -761,7 +769,7 @@
       <button class="scanBtn mt-5 mb-3" (click)="proceed(); open(viewOrder, selectedTable)">
         View order
       </button>
-      <button class="timerCapsule completeDine" (click)="proceed()">
+      <button class="timerCapsule completeDine" (click)="proceed();">
         Complete Dine In
       </button>
     </div>
@@ -905,3 +913,112 @@
     </div>
   </div>
 </ng-template>
+<ng-template #newOrderDetails let-modal>
+  <button class="backBtn backModal" (click)="proceed(); open(counterTable, 'counterTable')">
+    <i class="fa fa-arrow-left"></i>
+  </button>
+  <div class="modal-body checkoutModal">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="head mt-3 text-center">Order Details</h1>
+        </div>
+        <div class="col-sm-12 d-flex justify-content-center align-items-center">
+          <div class="w-30 d-flex justify-content-center align-items-center">
+            <app-cartitem></app-cartitem>
+          </div>
+        </div>
+        <div class="col-sm-12 d-flex justify-content-center align-items-center">
+          <div class="w-30 d-flex justify-content-center align-items-center">
+            <app-cartitem></app-cartitem>
+          </div>
+        </div>
+        <div class="col-sm-12 d-flex justify-content-center align-items-center">
+          <div class="w-40 d-flex justify-content-center align-items-center">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="grandtotal">
+                    <h5>Waiter</h5>
+                    <h5>John Smith</h5>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="grandtotal">
+                    <h5>Table No.</h5>
+                    <h5>50</h5>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="hr"></div>
+                  <div class="totalSection">
+                    <div class="extraCharges">
+                      <h6>GST Tax</h6>
+                      <h6>13%</h6>
+                    </div>
+                    <div class="extraCharges">
+                      <h6>Discount</h6>
+                      <h6>0%</h6>
+                    </div>
+                    <div class="grandtotal">
+                      <h5>Grand Total</h5>
+                      <h5>$250</h5>
+                    </div>
+                  </div>
+                  <div class="hr"></div>
+                  <div class="col-sm-12">
+                    <div class="grandtotal">
+                      <h5>Payment By</h5>
+                      <h5>Cash</h5>
+                    </div>
+                  </div>
+                  <div class="checkoutBtn d-flex justify-content-center align-items-center">
+                    <button (click)="proceed();">
+                      Go to Main Menu
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-container>
+  <ng-template #newOrder let-modal>
+    <div class="modal-body checkoutModal completed">
+      <h1 class="heading">Menu</h1>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="checboxes">
+            <div class="checboxesMenu" *ngFor="let item of Menus; let i = index">
+              <div class="d-flex align-items-center">
+                <div class="checkbox">
+                  <input type="checkbox" class="me-3" name="Menu" id="{{i}}" value="{{item?.item}}"/>
+                  <label for="{{i}}" class="menuItemLabel"
+                    >{{item?.item}}</label
+                  >
+                </div>
+                <div class="counter">
+                  <button (click)="counter('plus', $event, i)"><i class="fa fa-plus" ></i></button>
+                  <label class="value">0</label>
+                  <button (click)="counter('minus', $event, i)"><i class="fa fa-minus" ></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button class="add-btn mt-3" (click)="proceed();">
+              Save
+            </button>
+            <button class="cancel-btn mt-3" (click)="proceed();">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
