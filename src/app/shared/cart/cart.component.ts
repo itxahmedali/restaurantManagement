@@ -10,7 +10,11 @@ import * as $ from 'jquery'
 export class CartComponent implements OnInit {
   constructor(private modalService: NgbModal, private cd:ChangeDetectorRef) { }
   modalReference: any;
+  CartItems:any =[]
+  sum:number = 0
+  grandTotal:any = 0
   ngOnInit(): void {
+    this.observe()
     if(localStorage.getItem('modal')){
       if(localStorage.getItem('modal') == 'checkout'){
         $("#checkoutBtn").trigger('click')
@@ -48,6 +52,16 @@ export class CartComponent implements OnInit {
     }
 	}
   async observe() {
+    UniversalService.CartItemToCart.subscribe((res: string) => {
+        this.CartItems = res
+        this.sum = this.CartItems?.reduce((accumulator:any, object:any) => {
+          return accumulator + object.price;
+        }, 0);
+        this.grandTotal = (this.sum * 13/100) + this.sum
+        console.log(this.CartItems,res);
+        
+      this.cd.detectChanges();
+    });
   }
   modalClose(){
     localStorage.removeItem('modal')

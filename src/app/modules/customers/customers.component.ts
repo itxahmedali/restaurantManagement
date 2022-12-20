@@ -835,6 +835,7 @@ export class CustomersComponent implements OnInit {
       ],
     },
   ];
+  public CartItems:any =[{img: 'assets/menu items/soup.png', item: 'Chicken Soup', description: 'Soup is a primarily liquid food, generally served …of meat or vegetables with stock, milk, or water.', price: 80}]
   public MenuSelected: any;
   public itemDetailView: boolean = false;
   public itemDetail:any;
@@ -892,5 +893,10 @@ export class CustomersComponent implements OnInit {
       }
       this.cd.detectChanges();
     })
+    // UniversalService.CartItem.subscribe((res: string) => {
+    //   console.log(res);
+      
+    //   this.cd.detectChanges();
+    // });
   }
 }

@@ -1,5 +1,5 @@
 import { UniversalService } from './../../services/universal.service';
-import { Component, OnInit, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { fadeIn } from 'src/animations/itemCardAnimation';
 
 export interface Menu {
@@ -25,7 +25,9 @@ export class ItemComponent implements OnInit {
   public ItemNames: Name[] = [];
   public MenuItemsAnimate: Menu[] = [];
   public ItemNamesAnimate: Name[] = [];
-  constructor() {}
+  public CartItems:any = [];
+  public PreviousCartItems:any = [];
+  constructor(private cd:ChangeDetectorRef) {}
   ngOnChanges(changes: SimpleChanges) {
     this.MenuItems = this.data;
     this.data?.map((e: Menu) => {
@@ -37,9 +39,25 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.observe()
   }
   viewDetail(item:any){
     UniversalService.itemDetailView.next(true)
     UniversalService.itemDetail.next(item)
+  }
+  addItem(item:any){
+    console.log(this.CartItems);
+    this.CartItems.push(item)
+    UniversalService.CartItem.next(this.CartItems)
+    UniversalService.PreviousCartItem.next(this.CartItems)
+  }
+  async observe() {
+    // UniversalService.PreviousCartItem.subscribe((res: any) => {
+
+    //   if(res){
+    //     this.CartItems = res
+    //   }
+    //   this.cd.detectChanges();
+    // });
   }
 }

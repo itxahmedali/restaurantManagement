@@ -16,5 +16,8 @@ export class UniversalService {
   public static Orders: Subject<any> = new Subject<any>();
   public static SideBar: Subject<any> = new Subject<any>();
   public static TableModal: Subject<any> = new Subject<any>();
+  public static CartItem: Subject<any> = new Subject<any>();
+  public static CartItemToCart: Subject<any> = new Subject<any>();
+  public static PreviousCartItem: Subject<any> = new Subject<any>();
   constructor() { }
 }

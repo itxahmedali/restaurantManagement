@@ -16,7 +16,7 @@
         </div>
         <div class="itemPrice" @fadeIn>
           <p>{{ item.price | currency: "USD" }}</p>
-          <button class="addCartBtn" ><i class="fa fa-plus"></i></button>
+          <button class="addCartBtn" (click)="addItem(item)"><i class="fa fa-plus"></i></button>
         </div>
       </div>
     </div>

@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   public headingShow: boolean = true;
   public waiter: any = false;
   public modalReference: any;
+  public CartItems: any;
   constructor(private modalService: NgbModal, private cd: ChangeDetectorRef, private router: Router, private helper: HelperService,
     private location: Location, private AuthGuarDService: AuthGuardService) { }
   text: any = localStorage.getItem('lastVisitheadingPage') ? localStorage.getItem('lastVisitheadingPage') : "Starters";
@@ -59,6 +60,12 @@ export class HeaderComponent implements OnInit {
       }
       this.cd.detectChanges();
     });
+    UniversalService.CartItem.subscribe((res: string) => {
+      if(res){
+        this.CartItems = res
+      }
+      this.cd.detectChanges();
+    });
   }
 
   currentState = 'hidden';
@@ -79,8 +86,10 @@ export class HeaderComponent implements OnInit {
     this.cartButton = !this.cartButton;
     if (this.cartButton) {
       UniversalService.cartShow.next(true);
+      UniversalService.CartItemToCart.next(this.CartItems)
     } else {
       UniversalService.cartShow.next(false);
+      UniversalService.CartItem.next(this.CartItems)
     }
   }
   logout() {
