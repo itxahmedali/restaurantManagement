@@ -11,9 +11,11 @@ export class CartComponent implements OnInit {
   constructor(private modalService: NgbModal, private cd:ChangeDetectorRef) { }
   modalReference: any;
   CartItems:any =[]
+  duplicateItem:any= []
   sum:number = 0
   grandTotal:any = 0
   ngOnInit(): void {
+    this.duplicateItem=[]
     this.observe()
     if(localStorage.getItem('modal')){
       if(localStorage.getItem('modal') == 'checkout'){
@@ -58,10 +60,19 @@ export class CartComponent implements OnInit {
           return accumulator + object.price;
         }, 0);
         this.grandTotal = (this.sum * 13/100) + this.sum
-        console.log(this.CartItems,res);
-        
-      this.cd.detectChanges();
-    });
+        var count = 1;
+        for (var i = 0; i < this.CartItems.length; i = i + count) {
+          count = 1;
+          for (var j = i + 1; j < this.CartItems.length; j++) {
+            if (this.CartItems[i] === this.CartItems[j])
+              count++;
+          }
+          this.duplicateItem.push({item:this.CartItems[i]?.item,count:count})
+        }
+        this.CartItems = this.CartItems.filter((el:any, i:any, a:any) => i === a.indexOf(el))
+        UniversalService.DuplicateCartItem.next(this.duplicateItem)
+        this.cd.detectChanges();
+      });
   }
   modalClose(){
     localStorage.removeItem('modal')

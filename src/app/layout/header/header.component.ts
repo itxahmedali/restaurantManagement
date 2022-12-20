@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
     this.heading = localStorage.getItem('lastVisitheadingPage') ? localStorage.getItem('lastVisitheadingPage') : "Starters";
     this.checkUrl()
     this.observe();
-    if(localStorage.getItem('role') == 'counter'){
+    if(localStorage.getItem('role') == 'counter' || localStorage.getItem('role') == 'kitchen'){
       this.cartButtonShow = false
     }
   }
@@ -65,6 +65,7 @@ export class HeaderComponent implements OnInit {
         this.CartItems = res
       }
       this.cd.detectChanges();
+      
     });
   }
 
@@ -90,6 +91,7 @@ export class HeaderComponent implements OnInit {
     } else {
       UniversalService.cartShow.next(false);
       UniversalService.CartItem.next(this.CartItems)
+      // localStorage.setItem('CartItems',JSON.stringify(this.CartItems))
     }
   }
   logout() {

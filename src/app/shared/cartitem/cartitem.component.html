@@ -1,16 +1,19 @@
-<div class="cartBox" *ngFor="let item of data">
+<div class="cartBox" *ngFor="let item of data; let i = index">
     <div class="cartItemPic">
         <img src="{{item?.img}}" alt="">
     </div>
     <div class="cartcontent">
-        <h6>{{item?.item}}</h6>
+        <div class="d-flex justify-content-between">
+            <h6>{{item?.item}}</h6>
+            <h6>{{duplicateItems?.[i]?.count}}</h6>
+        </div>
         <p>{{item?.description}}</p>
         <div class="cartItemAction">
             <div class="cartItemActionbtns">
                 <button class="btn btn-success" (click)="editItem(item)">
                     <i class="fa fa-edit fa-sm"></i>
                 </button>
-                <button class="btn btn-danger">
+                <button class="btn btn-danger" (click)="deleteItem(item)">
                     <i class="fa fa-trash fa-sm"></i>
                 </button>
             </div>

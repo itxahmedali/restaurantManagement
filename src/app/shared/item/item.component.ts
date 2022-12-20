@@ -46,7 +46,11 @@ export class ItemComponent implements OnInit {
     UniversalService.itemDetail.next(item)
   }
   addItem(item:any){
-    console.log(this.CartItems);
+    // if(this.CartItems?.length < 1 && localStorage.getItem('CartItems')){
+    //   let FormatCart:any = localStorage.getItem('CartItems')
+    //   this.CartItems = JSON.parse(FormatCart)
+    //   console.log(JSON.parse(FormatCart));
+    // }
     this.CartItems.push(item)
     UniversalService.CartItem.next(this.CartItems)
     UniversalService.PreviousCartItem.next(this.CartItems)

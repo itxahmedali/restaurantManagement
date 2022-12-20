@@ -19,5 +19,6 @@ export class UniversalService {
   public static CartItem: Subject<any> = new Subject<any>();
   public static CartItemToCart: Subject<any> = new Subject<any>();
   public static PreviousCartItem: Subject<any> = new Subject<any>();
+  public static DuplicateCartItem: Subject<any> = new Subject<any>();
   constructor() { }
 }

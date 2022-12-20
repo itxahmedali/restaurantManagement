@@ -223,29 +223,17 @@
   </div>
 </div>
 <div class="container position-relative" *ngIf="opt == 'menu'">
-  <div class="row">
-    <div class="col-sm-3 d-flex justify-content-start align-items-center">
+  <div class="row mt-5">
+    <div class="col-sm-12 d-flex justify-content-end align-items-center">
+      <button class="addMenuBtn" (click)="addMenu()">
+        <i class="fa fa-plus"></i> Add Item
+      </button>
+    </div>
+    <div class="col-sm-4 d-flex justify-content-start align-items-center">
       <div class="searchField mt-1 w-100">
         <input type="text" class="w-100" placeholder="Search Item" />
         <i class="fa fa-search"></i>
       </div>
-    </div>
-    <div class="col-sm-2">
-      <label class="dateLabel">Date Range</label>
-      <div class="searchField mt-1 dateForm">
-        <input type="text" placeholder="From" />
-      </div>
-    </div>
-    <div class="col-sm-2">
-      <label for=""></label>
-      <div class="searchField mt-1 dateForm">
-        <input type="text" placeholder="To" />
-      </div>
-    </div>
-    <div class="col-sm-2 d-flex justify-content-between align-items-center">
-      <button class="addMenuBtn" (click)="addMenu()">
-        <i class="fa fa-plus"></i> Add Table
-      </button>
     </div>
     <div class="col-sm-2 d-flex justify-content-end align-items-center cstmDropDown">
       <ng-select [(ngModel)]="selectedSort">
@@ -629,8 +617,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-sm-12">
-                    <app-cartitem></app-cartitem>
-                    <app-cartitem></app-cartitem>
+                    <app-cartitem [data]="CartItems"></app-cartitem>
                   </div>
                 </div>
               </div>
@@ -639,7 +626,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-sm-12">
-                    <app-cartitem></app-cartitem>
+                    <app-cartitem [data]="CartItems"></app-cartitem>
                   </div>
                 </div>
               </div>
@@ -681,8 +668,7 @@
               <div class="container zIndexUp">
                 <div class="row">
                   <div class="col-sm-12">
-                    <app-cartitem></app-cartitem>
-                    <app-cartitem></app-cartitem>
+                    <app-cartitem [data]="CartItems"></app-cartitem>
                   </div>
                 </div>
               </div>
@@ -793,12 +779,7 @@
         </div>
         <div class="col-sm-12 d-flex justify-content-center align-items-center">
           <div class="w-30 d-flex justify-content-center align-items-center">
-            <app-cartitem></app-cartitem>
-          </div>
-        </div>
-        <div class="col-sm-12 d-flex justify-content-center align-items-center">
-          <div class="w-30 d-flex justify-content-center align-items-center">
-            <app-cartitem></app-cartitem>
+            <app-cartitem [data]="CartItems"></app-cartitem>
           </div>
         </div>
         <div class="col-sm-12 d-flex justify-content-center align-items-center">
@@ -852,12 +833,7 @@
         </div>
         <div class="col-sm-12 d-flex justify-content-center align-items-center">
           <div class="w-30 d-flex justify-content-center align-items-center">
-            <app-cartitem></app-cartitem>
-          </div>
-        </div>
-        <div class="col-sm-12 d-flex justify-content-center align-items-center">
-          <div class="w-30 d-flex justify-content-center align-items-center">
-            <app-cartitem></app-cartitem>
+            <app-cartitem [data]="CartItems"></app-cartitem>
           </div>
         </div>
         <div class="col-sm-12 d-flex justify-content-center align-items-center">
@@ -925,12 +901,7 @@
         </div>
         <div class="col-sm-12 d-flex justify-content-center align-items-center">
           <div class="w-30 d-flex justify-content-center align-items-center">
-            <app-cartitem></app-cartitem>
-          </div>
-        </div>
-        <div class="col-sm-12 d-flex justify-content-center align-items-center">
-          <div class="w-30 d-flex justify-content-center align-items-center">
-            <app-cartitem></app-cartitem>
+            <app-cartitem [data]="CartItems"></app-cartitem>
           </div>
         </div>
         <div class="col-sm-12 d-flex justify-content-center align-items-center">

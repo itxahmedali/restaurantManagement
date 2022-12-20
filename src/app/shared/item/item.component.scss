@@ -80,4 +80,9 @@
     border: none;
     background: #5AF4FE;
   }
+  .addCartBtn:active{
+    background-color: #5AF4FE;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
 }

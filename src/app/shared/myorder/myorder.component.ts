@@ -17,6 +17,8 @@ export class MyorderComponent implements OnInit {
   total: any;
   selectedCategory: any;
   selectedCategoryName: any;
+  public CartItems:any =[{img: 'assets/menu items/soup.png', item: 'Chicken Soup', description: 'Soup is a primarily liquid food, generally served …of meat or vegetables with stock, milk, or water.', price: 80}]
+
   constructor(private modalService: NgbModal, private router: Router, private cd: ChangeDetectorRef) { }
   views = [
     { id: 1, name: 'Grid View' },
